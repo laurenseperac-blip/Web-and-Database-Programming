@@ -1,0 +1,10 @@
+Project Idea: Homework planner
+
+- The purpose of this app is to allow students to keep track of their assignments and exams in a way that maximizes both organization and efficiency.
+
+Students can keep track of:
+- Assignment name
+- Class name
+- Progress (not started, in-progress, completed)
+
+Users will be able to add and delete assignments as well as update their status.
