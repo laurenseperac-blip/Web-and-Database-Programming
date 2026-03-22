@@ -11,5 +11,11 @@ Users are able to:
 The database model consists of three entities:
 Student, Class, and Assignment.
 
-The ERD and business rules are included below:
-<img width="742" height="774" alt="image" src="https://github.com/user-attachments/assets/3598efdf-6b9f-4603-9149-8264ac7664c3" />
+The Entity Relationship Diagram (ERD) and business rules represent the structure of the database and show how various entities are related to one another.
+<img width="823" height="840" alt="image" src="https://github.com/user-attachments/assets/e672c2c5-72b6-4023-8a39-b1515ae0e708" />
+
+
+The relations below are derived from the ERD and represent how the database is implemented using tables.
+<img width="862" height="397" alt="image" src="https://github.com/user-attachments/assets/d2e1a694-ad54-4a94-844f-39e46fa0b2d6" />
+
+The database is normalized to Third Normal Form (3NF).
