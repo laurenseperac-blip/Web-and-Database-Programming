@@ -1,19 +1,56 @@
-class Assignment {
-    constructor(description) {
-        this.description = description;
-    }
+const assignmentForm = document.getElementById("assignmentForm");
+
+const user = JSON.parse(localStorage.getItem("user"));
+
+if (!user) {
+    window.location.href = "login.html";
 }
 
-const assignmentForm = document.getElementById('assignmentForm');
+async function loadAssignments() {
 
-if (assignmentForm) {
-    assignmentForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+    const response = await fetch(`/assignments/${user.userId}`);
 
-        const description = document.getElementById('assignment').value;
+    const assignments = await response.json();
 
-        const newAssignment = new Assignment(description);
+    const assignmentList = document.getElementById("assignmentList");
 
-        console.log("New Assignment:", newAssignment);
+    assignmentList.innerHTML = "";
+
+    assignments.forEach(a => {
+
+        assignmentList.innerHTML += `
+            <li>
+                ${a.assignment_name} - ${a.progress} - ${a.due_date}
+            </li>
+        `;
     });
 }
+
+if (assignmentForm) {
+
+    assignmentForm.addEventListener("submit", async (event) => {
+
+        event.preventDefault();
+
+        const assignment = {
+            assignment_name: document.getElementById("assignment").value,
+            progress: document.getElementById("progress").value,
+            due_date: document.getElementById("due_date").value,
+            student_id: user.userId
+        };
+
+        const response = await fetch("/assignments", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(assignment)
+        });
+
+        if (response.ok) {
+            location.reload();
+        }
+    });
+}
+
+loadAssignments();
