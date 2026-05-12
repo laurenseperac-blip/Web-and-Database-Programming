@@ -15,18 +15,29 @@
 
     <h1>Create Assignment</h1>
 
-    <img src="images/studying_image.jpg" 
+    <img src="images/student_studying.jpg" 
         alt="Student studying"
         class="planner-image">
 
     <form id="assignmentForm">
-        <label for="assignment">Assignment Description:</label><br>
+
+    <label>Assignment:</label><br>
         <input type="text" id="assignment" name="assignment"><br><br>
+
+        <label>Progress:</label><br>
+        <input type="text" id="progress"><br><br>
+
+        <label>Due Date:</label><br>
+        <input type="date" id="due_date"><br><br>
 
         <input type="submit" value="Add Assignment">
     </form>
 
-    <script src="assignment.js"></script>
+    <h2>Your Assignments</h2>
+
+    <ul id="assignmentList"></ul>
+
+    <script src="scripts/assignment.js"></script>
 
 </body>
 </html>
