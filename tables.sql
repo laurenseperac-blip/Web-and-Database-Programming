@@ -1,35 +1,37 @@
-CREATE DATABASE if not exists Study_Planner;
-use Study_Planner;
+CREATE DATABASE IF NOT EXISTS Study_Planner;
+USE Study_Planner;
 
-CREATE TABLE if not exists Student (
-    student_id INT PRIMARY KEY AUTO_INCREMENT,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
-    email VARCHAR(100),
-    password VARCHAR(100)
+CREATE TABLE IF NOT EXISTS User (
+    userId INT PRIMARY KEY AUTO_INCREMENT,
+    firstName VARCHAR(50),
+    lastName VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(255)
 );
 
-CREATE TABLE if not exists Class (
+CREATE TABLE IF NOT EXISTS Class (
     class_id INT PRIMARY KEY AUTO_INCREMENT,
     class_name VARCHAR(100),
     instructor_name VARCHAR(100)
 );
 
-CREATE TABLE if not exists Enrollment (
+CREATE TABLE IF NOT EXISTS Enrollment (
     enrollment_id INT PRIMARY KEY AUTO_INCREMENT,
-    student_id INT,
+    userId INT,
     class_id INT,
-    FOREIGN KEY (student_id) REFERENCES Student(student_id),
+
+    FOREIGN KEY (userId) REFERENCES User(userId),
     FOREIGN KEY (class_id) REFERENCES Class(class_id)
 );
 
-CREATE TABLE if not exists Assignment (
+CREATE TABLE IF NOT EXISTS Assignment (
     assignment_id INT PRIMARY KEY AUTO_INCREMENT,
     assignment_name VARCHAR(100),
     progress VARCHAR(50),
     due_date DATE,
     class_id INT,
     student_id INT,
+
     FOREIGN KEY (class_id) REFERENCES Class(class_id),
-    FOREIGN KEY (student_id) REFERENCES Student(student_id)
+    FOREIGN KEY (student_id) REFERENCES User(userId)
 );
